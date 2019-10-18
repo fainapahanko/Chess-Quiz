@@ -39,7 +39,7 @@
     </div>
 
     <script>
-        
+
         var p = document.createElement("p")
         p.className = "result"
         var div = document.querySelector("#after")
@@ -75,9 +75,38 @@
                         var counter = count.innerText
                         if(target.value == "1" && parseInt(counter) < 2){
                             p.style.visibility = "visible"
-                            button.style.visibility = "hidden"
-                            p.innerText = "You right! See you soon :) "
+                            button.style.visibility = "visible"
+                            p.innerText = "You right! Another question?"
                             count.innerText = parseInt(counter) + 1
+                            button.onclick = function(){
+                                p.style.visibility = "hidden"
+                                button.style.visibility = "hidden"
+                                document.querySelector(".question").innerHTML = "3) My favourite chess player"
+                                var answers3 = ["Yurii Khomiak", "Bobby Fisher", "Garry Kasparov"]
+                                var inputs = document.querySelectorAll(".checks")
+                                inputs[0].value = "1"
+                                inputs[1].value = "0"
+                                inputs[2].value = "0"
+                                var spanAnswers = document.querySelectorAll(".answers")
+                                for(var i = 0; i < answers.length; i ++){
+                                    spanAnswers[i].innerHTML = answers3[i]
+                                }
+                                document.querySelector("#quizField").onclick = function(event){
+                                    var target = event.target
+                                    var count = document.querySelector("#counter")
+                                    var counter = count.innerText
+                                    if(target.value == "1" && parseInt(counter) < 3){
+                                        p.style.visibility = "visible"
+                                        button.style.visibility = "hidden"
+                                        p.innerText = "Cool! You win :)"
+                                        count.innerText = parseInt(counter) + 1
+                                    } else if (target.value == "0" && parseInt(counter) < 3){
+                                        p.style.visibility = "visible"
+                                        button.style.visibility = "hidden"
+                                        p.innerText = "You wrong!"
+                                    }
+                                }
+                            }
                         } else if (target.value == "0" && parseInt(counter) < 2){
                             p.style.visibility = "visible"
                             button.style.visibility = "hidden"
